@@ -11,8 +11,8 @@ class Config {
     static X_LENGTH = 80;
     static Y_LENGTH = 80;
     static ANIMATION = {
-        fps: 2,
-        totalIterations: 13
+        fps: 60,
+        totalIterations: 9
     };
     static COLOURS = {
         background: '#1030A0',
@@ -22,6 +22,15 @@ class Config {
 
 class Timer {
     static frame = 0;
+    static animation = 0;
+
+    static resetFrame() {
+        this.frame = 0;
+    }
+
+    static resetAnimation() {
+        this.animation = 0;
+    }
 }
 
 class Debug {

@@ -15,10 +15,8 @@ class Sketch {
 
     update(self) {
         self.draw(self);
-        if (Timer.frame < Config.ANIMATION.totalIterations){
-            self.factree.update();
-        }
         Timer.frame++;
+        self.factree.update();
     }
 
     draw(self) {
