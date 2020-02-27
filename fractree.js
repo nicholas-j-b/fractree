@@ -18,11 +18,15 @@ class Factree {
                 this.ctx, 
                 Config.START.x, 
                 Config.START.y, 
-                Config.X_LENGTH, 
-                Config.Y_LENGTH, 
+                this.getSliderVal("lengthSlider"),
+                this.getSliderVal("lengthSlider"),
                 this.getColour()
             )
         );
+    }
+
+    getSliderVal(name) {
+        return parseInt(document.getElementById(name).value);
     }
     
     recalculate() {
@@ -40,9 +44,9 @@ class Factree {
             let b1 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION), this.getColour());
             let b2 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION), this.getColour());
             //let randomTheta = (Math.random() - .5) * Config.THETA;
-            let randomTheta = Timer.frame * .003;
-            b1.rotate(randomTheta);
-            b2.rotate(-randomTheta);
+            let angle = (this.getSliderVal("angleSlider") / 100) * Math.PI  * 2;
+            b1.rotate(angle);
+            b2.rotate(-angle);
             branchesToAdd.push(b1);
             branchesToAdd.push(b2);
         }
