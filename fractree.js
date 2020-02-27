@@ -39,11 +39,9 @@ class Factree {
     }
      
     getColour() {
-        let r = 255 -(Timer.frame * 255) / Config.ANIMATION.totalIterations;
-        let g = (Timer.frame * 255) / Config.ANIMATION.totalIterations;
+        let r = 255 - (Timer.frame * 255) / Config.ANIMATION.totalIterations;
+        let g = 255 - (Timer.frame * 255) / Config.ANIMATION.totalIterations;
         let b = (Timer.frame * 255) / Config.ANIMATION.totalIterations;
         return `rgb(${r}, ${g}, ${b})`
     }
-
-
 }
