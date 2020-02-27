@@ -1,5 +1,6 @@
 class Branch {
-    constructor(ctx, originX, originY, x, y) {
+    constructor(ctx, originX, originY, x, y, colour) {
+        this.colour = colour;
         this.ctx = ctx;
         this.originX = originX;
         this.originY = originY;
@@ -14,7 +15,7 @@ class Branch {
         this.ctx.closePath();
 
         this.ctx.lineWidth = Config.BRANCH_WIDTH ;
-        this.ctx.strokeStyle = Config.COLOURS.branch;
+        this.ctx.strokeStyle = this.colour;
         this.ctx.stroke();
     }
 

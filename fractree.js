@@ -10,8 +10,8 @@ class Factree {
         let branchesToAdd = [];
         for (let i = 0; i < this.branches[this.branches.length - 1].length; i++){
             let branch = this.branches[this.branches.length - 1][i];
-            let b1 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION));
-            let b2 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION));
+            let b1 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION), this.getColour());
+            let b2 = new Branch(this.ctx, branch.x, branch.y, ...branch.asScaledVector(Config.BRANCH_SIZE_REDUCTION), this.getColour());
             let randomTheta = (Math.random() - .5) * Config.THETA;
             b1.rotate(randomTheta);
             b2.rotate(-randomTheta);
@@ -27,6 +27,13 @@ class Factree {
                 branch.draw();
             }
         }
+    }
+     
+    getColour() {
+        let r = 255 -(Timer.frame * 255) / Config.ANIMATION.totalIterations;
+        let g = (Timer.frame * 255) / Config.ANIMATION.totalIterations;
+        let b = (Timer.frame * 255) / Config.ANIMATION.totalIterations;
+        return `rgb(${r}, ${g}, ${b})`
     }
 
 
