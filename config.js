@@ -11,8 +11,8 @@ class Config {
     static X_LENGTH = 80;
     static Y_LENGTH = 80;
     static ANIMATION = {
-        fps: 60,
-        totalIterations: 9
+        fps: 30,
+        totalIterations: 12
     };
     static COLOURS = {
         background: '#1030A0',
