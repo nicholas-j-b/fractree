@@ -3,7 +3,7 @@ class Factree {
         this.ctx = ctx;
         this.branches = [];
         this.branches.push([]);
-        this.branches[0].push(new Branch(ctx, 10, 10, 100, 100));
+        this.branches[0].push(new Branch(ctx, 200, 200, 80, 80));
     }
 
     update() {
