@@ -3,7 +3,16 @@ class Factree {
         this.ctx = ctx;
         this.branches = [];
         this.branches.push([]);
-        this.branches[0].push(new Branch(ctx, 400, 200, 80, 80, this.getColour()));
+        this.branches[0].push(
+            new Branch(
+                ctx, 
+                Config.START.x, 
+                Config.START.y, 
+                Config.X_LENGTH, 
+                Config.Y_LENGTH, 
+                this.getColour()
+            )
+        );
     }
 
     update() {
