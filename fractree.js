@@ -53,7 +53,7 @@ class Factree {
     }
 
     getNextAngle(index, max) {
-        let multiplier = ((index / max) - (max / 2)) / max;
+        let multiplier = (index - (max / 2)) / max;
         let foldSliderVal = ((this.getSliderVal("foldSlider") / 10) - 1) / 10;
         let changingAngle = (Timer.animation + 1) / Config.TREE_DEPTH;
         let changing = changingAngle * foldSliderVal + 1;
