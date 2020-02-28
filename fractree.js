@@ -41,7 +41,7 @@ class Factree {
         let branchesToAdd = [];
         for (let i = 0; i < this.branches[this.branches.length - 1].length; i++) {
             let branch = this.branches[this.branches.length - 1][i];
-            let shrinkFactor = this.getSliderVal("lengthSlider") / 100;
+            let shrinkFactor = this.getSliderVal("shrinkSlider") / 100;
             let b1 = new Branch(
                 this.ctx,
                 branch.x,
