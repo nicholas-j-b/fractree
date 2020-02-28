@@ -11,7 +11,7 @@ class Config {
     static ANIMATION = {
         fps: 30
     };
-    static TREE_DEPTH = 12;
+    static TREE_DEPTH = 6;
     static COLOURS = {
         background: 'rgb(247, 220, 111)'
     };

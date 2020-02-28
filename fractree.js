@@ -41,34 +41,36 @@ class Factree {
         }
     }
 
+    createNewBranch(branch){
+        let shrinkFactor = this.getSliderVal("shrinkSlider") / 100;
+        return new Branch(
+            this.ctx,
+            branch.x,
+            branch.y,
+            ...branch.asScaledVector(shrinkFactor),
+            this.getColour()
+        );
+    }
+
+    getNextAngle(index, max) {
+        let multiplier = ((index / max) - (max / 2)) / max;
+        let foldSliderVal = ((this.getSliderVal("foldSlider") / 10) - 1) / 10;
+        let changingAngle = (Timer.animation + 1) / Config.TREE_DEPTH;
+        let changing = changingAngle * foldSliderVal + 1;
+        let overalAngle = (this.getSliderVal("angleSlider") / 100) * Math.PI * 2;
+        return changing * overalAngle * multiplier;
+    }
+
     calculateLayer() {
         let branchesToAdd = [];
         for (let i = 0; i < this.branches[this.branches.length - 1].length; i++) {
             let branch = this.branches[this.branches.length - 1][i];
-            let shrinkFactor = this.getSliderVal("shrinkSlider") / 100;
-            let b1 = new Branch(
-                this.ctx,
-                branch.x,
-                branch.y,
-                ...branch.asScaledVector(shrinkFactor),
-                this.getColour()
-            );
-            let b2 = new Branch(
-                this.ctx,
-                branch.x,
-                branch.y,
-                ...branch.asScaledVector(shrinkFactor),
-                this.getColour()
-            );
-            let foldSliderVal = ((this.getSliderVal("foldSlider") / 10) - 1) / 10;
-            let changingAngle = (Timer.animation + 1) / Config.TREE_DEPTH;
-            let changing = changingAngle * foldSliderVal + 1;
-            let overalAngle = (this.getSliderVal("angleSlider") / 100) * Math.PI * 2;
-            let angle = changing * overalAngle
-            b1.rotate(angle);
-            b2.rotate(-angle);
-            branchesToAdd.push(b1);
-            branchesToAdd.push(b2);
+            for (let j = 0; j < 4; j++) {
+                let angle = this.getNextAngle(j, 4 - 1);
+                let newBranch = this.createNewBranch(branch);
+                newBranch.rotate(angle);
+                branchesToAdd.push(newBranch);
+            }
         }
         this.branches.push(branchesToAdd);
     }
