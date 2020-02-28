@@ -32,12 +32,12 @@ class Factree {
     recalculate() {
         Timer.resetAnimation();
         for (let i = 0; i < Config.TREE_DEPTH; i++) {
-            this.calculateLayer(i + 1);
+            this.calculateLayer();
             Timer.animation++;
         }
     }
 
-    calculateLayer(layer) {
+    calculateLayer() {
         let branchesToAdd = [];
         for (let i = 0; i < this.branches[this.branches.length - 1].length; i++) {
             let branch = this.branches[this.branches.length - 1][i];
@@ -57,7 +57,7 @@ class Factree {
                 this.getColour()
             );
             let foldSliderVal = ((this.getSliderVal("foldSlider") / 10) - 1) / 10;
-            let changingAngle = layer / Config.TREE_DEPTH;
+            let changingAngle = (Timer.animation + 1) / Config.TREE_DEPTH;
             let changing = changingAngle * foldSliderVal + 1;
             let overalAngle = (this.getSliderVal("angleSlider") / 100) * Math.PI * 2;
             let angle = changing * overalAngle
@@ -78,9 +78,9 @@ class Factree {
     }
 
     getColour() {
-        let r = 255 - (Timer.animation * 255) / Config.TREE_DEPTH;
-        let g = 255 - (Timer.animation * 255) / Config.TREE_DEPTH;
-        let b = (Timer.animation * 255) / Config.TREE_DEPTH;
+        let r = 200 - 100 * (Timer.animation / (Config.TREE_DEPTH - 1));
+        let g = 100 + 40 * (Timer.animation / (Config.TREE_DEPTH - 1));
+        let b = 55 + 200 * (Timer.animation / (Config.TREE_DEPTH - 1));
         return `rgb(${r}, ${g}, ${b})`
     }
 }

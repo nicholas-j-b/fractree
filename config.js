@@ -13,8 +13,7 @@ class Config {
     };
     static TREE_DEPTH = 12;
     static COLOURS = {
-        background: '#1030A0',
-        branch: 'rgb(255, 0, 0)'
+        background: 'rgb(247, 220, 111)'
     };
 }
 
