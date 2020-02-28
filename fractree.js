@@ -25,7 +25,8 @@ class Factree {
                 Config.START.y,
                 this.getSliderVal("lengthSlider"),
                 this.getSliderVal("lengthSlider"),
-                this.getColour()
+                this.getColour(),
+                this.getWidth()
             )
         );
     }
@@ -48,7 +49,8 @@ class Factree {
             branch.x,
             branch.y,
             ...branch.asScaledVector(shrinkFactor),
-            this.getColour()
+            this.getColour(),
+            this.getWidth()
         );
     }
 
@@ -83,10 +85,15 @@ class Factree {
         }
     }
 
+    getWidth() {
+        return (this.getSliderVal("fatSlider") / 100) * (Config.TREE_DEPTH - Timer.animation);
+    }
+
     getColour() {
         let r = 80 + 50 * ((Timer.animation / (Config.TREE_DEPTH - 1))**2);
         let g = 55 + 150 * ((Timer.animation / (Config.TREE_DEPTH - 1))**2);
         let b = 80 + 150 * ((Timer.animation / (Config.TREE_DEPTH - 1))**2);
-        return `rgb(${r}, ${g}, ${b})`
+        let a = 1 - ((Timer.animation / (Config.TREE_DEPTH - 1)) / 1.4);
+        return `rgba(${r}, ${g}, ${b}, ${a})`
     }
 }
