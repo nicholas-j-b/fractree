@@ -3,15 +3,15 @@ class Config {
     static CANVAS_HEIGHT = 1000;
     static BRANCH_WIDTH = 1;
     static START = {
-        x: 400,
+        x: 200,
         y: 300
     };
     static X_LENGTH = 80;
     static Y_LENGTH = 80;
     static ANIMATION = {
-        fps: 30,
-        totalIterations: 12
+        fps: 30
     };
+    static TREE_DEPTH = 12;
     static COLOURS = {
         background: '#1030A0',
         branch: 'rgb(255, 0, 0)'
