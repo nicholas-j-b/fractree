@@ -6,8 +6,13 @@ class Factree {
     }
 
     update() {
+        this.reset();
         this.clearBranches();
         this.recalculate();
+    }
+
+    reset() {
+        Timer.resetAnimation();
     }
 
     clearBranches() {
@@ -30,7 +35,6 @@ class Factree {
     }
 
     recalculate() {
-        Timer.resetAnimation();
         for (let i = 0; i < Config.TREE_DEPTH; i++) {
             this.calculateLayer();
             Timer.animation++;
