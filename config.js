@@ -2,7 +2,6 @@ class Config {
     static CANVAS_WIDTH = 1400;
     static CANVAS_HEIGHT = 1000;
     static BRANCH_WIDTH = 1;
-    static BRANCH_SIZE_REDUCTION = .83;
     static START = {
         x: 400,
         y: 300
